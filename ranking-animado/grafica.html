@@ -30,37 +30,39 @@
   .back-link:hover{background:rgba(255,255,255,.08)}
   main{max-width:680px;margin:0 auto;padding:16px 12px 40px}
 
-  .panel{background:var(--panel);border:1px solid var(--borde);border-radius:12px;padding:16px 14px}
-  .head-row{display:flex;justify-content:flex-end;align-items:center;margin-bottom:10px;gap:6px}
+  .panel{background:var(--panel);border:1px solid var(--borde);border-radius:12px;padding:16px 14px;position:relative;overflow:hidden}
+
+  .jornada-box{position:absolute;top:14px;right:14px;text-align:right;z-index:1}
+  .jornada-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;color:var(--oro);line-height:1;letter-spacing:.02em}
+  .jornada-fecha{font-family:'Barlow',sans-serif;font-weight:600;font-size:.68rem;color:var(--muted);margin-top:2px;letter-spacing:.04em;text-transform:uppercase}
+
+  .head-row{display:flex;justify-content:flex-start;align-items:center;margin-bottom:10px;gap:6px;position:relative;z-index:1}
   .mode-btn{background:transparent;border:1px solid var(--borde);color:var(--muted);font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer}
   .mode-btn.active{background:var(--azul);color:#fff;border-color:var(--azul)}
 
-  .picker{display:none;flex-wrap:wrap;gap:6px;margin-bottom:10px;max-height:110px;overflow-y:auto;padding:8px;background:rgba(255,255,255,.02);border-radius:8px}
+  .picker{display:none;flex-wrap:wrap;gap:6px;margin-bottom:10px;max-height:110px;overflow-y:auto;padding:8px;background:rgba(255,255,255,.02);border-radius:8px;position:relative;z-index:1}
   .picker.show{display:flex}
   .chip{font-family:'Barlow',sans-serif;font-size:.78rem;background:var(--fondo);border:1px solid var(--borde);color:var(--texto);padding:5px 11px;border-radius:14px;cursor:pointer;white-space:nowrap}
   .chip.on{background:var(--oro);color:#412402;border-color:var(--oro);font-weight:600}
-  .hint{font-family:'Barlow',sans-serif;font-size:.72rem;color:var(--muted);margin-bottom:8px;display:none}
+  .hint{font-family:'Barlow',sans-serif;font-size:.72rem;color:var(--muted);margin-bottom:8px;display:none;position:relative;z-index:1}
   .hint.show{display:block}
 
-  .axis{position:relative;height:16px;margin:0 0 6px;font-size:.68rem;color:var(--muted);font-family:'Barlow',sans-serif}
+  .axis{position:relative;height:16px;margin:0 0 2px;font-size:.68rem;color:var(--muted);font-family:'Barlow',sans-serif;z-index:1}
   .axis span{position:absolute;top:0}
+  .gridlines{position:absolute;left:0;right:0;top:0;bottom:0;z-index:0}
+  .gridline{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.05)}
 
-  .bars{position:relative;overflow-y:auto}
-  .row{position:absolute;left:0;right:0;display:flex;align-items:center;height:24px;transition:top .8s cubic-bezier(.4,0,.2,1)}
+  .bars{position:relative;overflow-y:auto;z-index:1}
+  .row{position:absolute;left:0;right:0;display:flex;align-items:center;height:25px;transition:top .85s cubic-bezier(.22,.61,.36,1)}
   .rank{width:26px;font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:800;color:var(--muted);text-align:right;margin-right:8px;flex-shrink:0}
-  .bar{height:19px;border-radius:4px;display:flex;align-items:center;transition:width .8s cubic-bezier(.4,0,.2,1);min-width:1px;position:relative}
-  .bar.gold{background:var(--oro)}
-  .bar.silver{background:var(--plata)}
-  .bar.bronze{background:var(--bronce)}
-  .bar.blue{background:var(--azul)}
-  .bar.green{background:var(--verde)}
-  .name{font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:600;color:var(--fondo);white-space:nowrap;padding:0 8px}
-  .name.outside{position:static;margin-left:8px;color:var(--texto);padding:0}
+  .bar{height:20px;border-radius:6px;display:flex;align-items:center;transition:width .85s cubic-bezier(.22,.61,.36,1);min-width:1px;position:relative;box-shadow:0 2px 6px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.15)}
+  .name{font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:600;color:rgba(10,14,26,.85);white-space:nowrap;padding:0 8px;text-shadow:0 1px 0 rgba(255,255,255,.2)}
+  .name.outside{position:static;margin-left:8px;color:var(--texto);padding:0;text-shadow:none}
   .name-link{text-decoration:none;cursor:pointer}
   .name-link:hover{text-decoration:underline}
-  .pts{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:800;color:var(--texto);margin-left:6px;flex-shrink:0;min-width:24px}
+  .pts{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:800;color:var(--texto);margin-left:6px;flex-shrink:0;min-width:26px;text-align:right}
 
-  .controls{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--borde);flex-wrap:wrap}
+  .controls{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--borde);flex-wrap:wrap;position:relative;z-index:1}
   .play-btn{background:var(--rojo);border:none;color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:1rem}
   .play-btn:active{transform:scale(.95)}
   .slider{flex:1;min-width:120px;-webkit-appearance:none;appearance:none;height:4px;background:var(--borde);border-radius:2px;outline:none}
@@ -83,13 +85,19 @@
 </header>
 <main>
 <div class="panel">
+  <div class="jornada-box">
+    <div class="jornada-num" id="jornada-num">&nbsp;</div>
+    <div class="jornada-fecha" id="jornada-fecha">&nbsp;</div>
+  </div>
   <div class="head-row">
     <button class="mode-btn active" id="mode-all">Todos</button>
     <button class="mode-btn" id="mode-cmp">Comparar</button>
   </div>
   <div class="picker" id="picker"></div>
   <div class="hint" id="hint">Selecciona los participantes que quieras comparar</div>
-  <div class="axis" id="axis"></div>
+  <div class="axis" id="axis">
+    <div class="gridlines" id="gridlines"></div>
+  </div>
   <div class="bars" id="bars"></div>
   <div class="controls">
     <button class="play-btn" id="play" aria-label="Reproducir"><i id="play-icon">&#9654;</i></button>
@@ -109,6 +117,19 @@
 <footer id="footer"></footer>
 <script>
 var SCALE_MAX = 500;
+var MESES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+
+function fmtFecha(iso){
+  if(!iso) return '';
+  var p = iso.split('-');
+  return parseInt(p[2],10)+' '+MESES[parseInt(p[1],10)-1]+' '+p[0];
+}
+
+function lighten(hex, pct){
+  var n=parseInt(hex.slice(1),16), r=(n>>16)&255, g=(n>>8)&255, b=n&255;
+  r=Math.min(255,Math.max(0,r+pct*2.55)); g=Math.min(255,Math.max(0,g+pct*2.55)); b=Math.min(255,Math.max(0,b+pct*2.55));
+  return 'rgb('+r.toFixed(0)+','+g.toFixed(0)+','+b.toFixed(0)+')';
+}
 
 fetch('data/ranking_historico.json')
   .then(function(r){ return r.json(); })
@@ -121,16 +142,21 @@ fetch('data/ranking_historico.json')
 
 function init(DATA){
   var raw = DATA.participantes;
+  var fechas = DATA.fechas || [];
   var MAXJ = DATA.jornadas.length - 1;
-  var ROWH_ALL = 19, ROWH_CMP = 28;
-  var colorsCmp = ['gold','blue','green','bronze','silver','blue','green','bronze'];
+  var ROWH_ALL = 25, ROWH_CMP = 32;
+  var colorHex = {gold:'#F5A623', silver:'#A0A8B0', bronze:'#CD7F32', green:'#1A7A4A'};
+  var colorsCmp = ['gold','blue','green','bronze','silver','blue'];
+  var cmpColorHex = {gold:'#F5A623', silver:'#A0A8B0', bronze:'#CD7F32', green:'#1A7A4A', blue:'#185FA5'};
 
   var barsEl=document.getElementById('bars'), slider=document.getElementById('slider'),
       playBtn=document.getElementById('play'), playIcon=document.getElementById('play-icon'),
-      axisEl=document.getElementById('axis'), pickerEl=document.getElementById('picker'),
+      axisEl=document.getElementById('axis'), gridEl=document.getElementById('gridlines'),
+      pickerEl=document.getElementById('picker'),
       hintEl=document.getElementById('hint'), modeAllBtn=document.getElementById('mode-all'),
       modeCmpBtn=document.getElementById('mode-cmp'), speedSel=document.getElementById('speed-sel'),
-      scaleNote=document.getElementById('scale-note'), footer=document.getElementById('footer');
+      scaleNote=document.getElementById('scale-note'), footer=document.getElementById('footer'),
+      jornadaNum=document.getElementById('jornada-num'), jornadaFecha=document.getElementById('jornada-fecha');
 
   slider.max = MAXJ;
   scaleNote.textContent = 'Escala fija: 0 a ' + SCALE_MAX + ' puntos';
@@ -140,6 +166,7 @@ function init(DATA){
 
   var mode='all';
   var selected=[];
+  var currentPts = {};
 
   function buildAxis(){
     var step = SCALE_MAX/5;
@@ -147,7 +174,13 @@ function init(DATA){
     for(var t=0;t<=SCALE_MAX;t+=step){
       html+='<span style="left:'+(t/SCALE_MAX*100)+'%">'+Math.round(t)+'</span>';
     }
-    axisEl.innerHTML=html;
+    axisEl.querySelectorAll('span').forEach(function(s){s.remove()});
+    axisEl.insertAdjacentHTML('beforeend', html);
+    var gridHtml='';
+    for(var t2=0;t2<=SCALE_MAX;t2+=step){
+      gridHtml+='<div class="gridline" style="left:'+(t2/SCALE_MAX*100)+'%"></div>';
+    }
+    gridEl.innerHTML=gridHtml;
   }
   buildAxis();
 
@@ -163,6 +196,7 @@ function init(DATA){
         var idx=selected.indexOf(i);
         if(idx>-1){ selected.splice(idx,1); chip.classList.remove('on'); }
         else{ selected.push(i); chip.classList.add('on'); }
+        currentPts={}; barsEl.innerHTML='';
         render(parseInt(slider.value,10));
       });
     });
@@ -186,10 +220,30 @@ function init(DATA){
     if(rank===1) return 'gold';
     if(rank===2) return 'silver';
     if(rank===3) return 'bronze';
-    return (rank%2===0) ? 'blue' : 'green';
+    return 'green';
+  }
+
+  function gradientFor(colorClass){
+    var hex = mode==='cmp' ? cmpColorHex[colorClass] : colorHex[colorClass];
+    return 'linear-gradient(90deg, '+lighten(hex,-8)+' 0%, '+lighten(hex,12)+' 100%)';
+  }
+
+  function animateCount(el, from, to, duration){
+    var start = performance.now();
+    function step(now){
+      var prog = Math.min((now-start)/duration, 1);
+      var eased = 1-Math.pow(1-prog,3);
+      var val = Math.round(from + (to-from)*eased);
+      el.textContent = val;
+      if(prog<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
   }
 
   function render(j){
+    jornadaNum.textContent = 'Jornada ' + j;
+    jornadaFecha.textContent = fmtFecha(fechas[j]);
+
     var rowh = mode==='cmp' ? ROWH_CMP : ROWH_ALL;
     var pool = (mode==='cmp' && selected.length)
       ? selected.map(function(i){return {nombre:raw[i].nombre, slug:raw[i].slug, puntos:raw[i].puntos[j] || 0, origIdx:i};})
@@ -197,33 +251,67 @@ function init(DATA){
     var ranked = computeRealRanks(pool);
     ranked.sort(function(a,b){ return a.rank-b.rank; });
     barsEl.style.height=(ranked.length*rowh+6)+'px';
-    var html='';
+
+    var existing = {};
+    barsEl.querySelectorAll('.row').forEach(function(r){ existing[r.dataset.id]=r; });
+
     ranked.forEach(function(x,visualPos){
       var w = Math.max((x.puntos/SCALE_MAX)*100, x.puntos>0?0.6:0);
       var nameInside = w>22;
       var colorClass = mode==='cmp' ? colorsCmp[x.origIdx % colorsCmp.length] : colorClassAll(x.rank);
-      html+='<div class="row" style="top:'+(visualPos*rowh)+'px">'+
-        '<div class="rank">'+x.rank+'</div>'+
-        '<div class="bar '+colorClass+'" style="width:'+w+'%">'+
-          (nameInside?'<a class="name name-link" href="participante.html?id='+x.slug+'">'+x.nombre+'</a>':'')+
-        '</div>'+
-        (!nameInside?'<a class="name outside name-link" href="participante.html?id='+x.slug+'">'+x.nombre+'</a>':'')+
-        '<span class="pts">'+x.puntos+'</span>'+
-      '</div>';
+      var grad = gradientFor(colorClass);
+      var key = x.origIdx;
+      var row = existing[key];
+
+      if(!row){
+        row = document.createElement('div');
+        row.className = 'row';
+        row.dataset.id = key;
+        row.style.top = (visualPos*rowh)+'px';
+        row.innerHTML =
+          '<div class="rank">'+x.rank+'</div>'+
+          '<div class="bar" style="width:0%;background:'+grad+'">'+
+            (nameInside?'<a class="name name-link" href="participante.html?id='+x.slug+'">'+x.nombre+'</a>':'')+
+          '</div>'+
+          (!nameInside?'<a class="name outside name-link" href="participante.html?id='+x.slug+'">'+x.nombre+'</a>':'')+
+          '<span class="pts">0</span>';
+        barsEl.appendChild(row);
+        requestAnimationFrame(function(){
+          row.style.top = (visualPos*rowh)+'px';
+          row.querySelector('.bar').style.width = w+'%';
+        });
+      } else {
+        row.style.top = (visualPos*rowh)+'px';
+        var barEl = row.querySelector('.bar');
+        barEl.style.width = w+'%';
+        barEl.style.background = grad;
+        row.querySelector('.rank').textContent = x.rank;
+      }
+
+      var ptsEl = row.querySelector('.pts');
+      var prevVal = currentPts[key] || 0;
+      animateCount(ptsEl, prevVal, x.puntos, 850);
+      currentPts[key] = x.puntos;
     });
-    barsEl.innerHTML=html;
+
+    Object.keys(existing).forEach(function(k){
+      if(!ranked.find(function(r){return String(r.origIdx)===k})){
+        existing[k].remove();
+      }
+    });
+
     slider.value=j;
   }
   render(0);
 
   modeAllBtn.addEventListener('click', function(){
-    mode='all';
+    mode='all'; currentPts={}; barsEl.innerHTML='';
     modeAllBtn.classList.add('active'); modeCmpBtn.classList.remove('active');
     pickerEl.classList.remove('show'); hintEl.classList.remove('show');
     render(parseInt(slider.value,10));
   });
   modeCmpBtn.addEventListener('click', function(){
-    mode='cmp';
+    mode='cmp'; currentPts={}; barsEl.innerHTML='';
     modeCmpBtn.classList.add('active'); modeAllBtn.classList.remove('active');
     pickerEl.classList.add('show'); hintEl.classList.add('show');
     render(parseInt(slider.value,10));
@@ -239,7 +327,7 @@ function init(DATA){
   function play(){
     playing=true;
     playIcon.innerHTML='&#10074;&#10074;';
-    if(parseInt(slider.value,10)>=MAXJ) render(0);
+    if(parseInt(slider.value,10)>=MAXJ){ currentPts={}; barsEl.innerHTML=''; render(0); }
     timer=setInterval(step, getSpeed());
   }
   function pause(){
@@ -248,7 +336,7 @@ function init(DATA){
     clearInterval(timer);
   }
   playBtn.addEventListener('click', function(){ playing?pause():play(); });
-  slider.addEventListener('input', function(){ pause(); render(parseInt(slider.value,10)); });
+  slider.addEventListener('input', function(){ pause(); currentPts={}; barsEl.innerHTML=''; render(parseInt(slider.value,10)); });
   speedSel.addEventListener('change', function(){ if(playing){ clearInterval(timer); timer=setInterval(step, getSpeed()); } });
 }
 </script>
