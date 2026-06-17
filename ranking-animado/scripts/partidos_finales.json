@@ -1,0 +1,834 @@
+[
+ {
+  "numero": 1,
+  "hora": "15:00",
+  "ciudad": "Mexico City",
+  "equipo1": "MEX",
+  "equipo2": "RSA",
+  "grupo": "A"
+ },
+ {
+  "numero": 2,
+  "hora": "22:00",
+  "ciudad": "Guadalajara",
+  "equipo1": "KOR",
+  "equipo2": "CZE",
+  "grupo": "A"
+ },
+ {
+  "numero": 3,
+  "hora": "15:00",
+  "ciudad": "Toronto",
+  "equipo1": "CAN",
+  "equipo2": "BIH",
+  "grupo": "B"
+ },
+ {
+  "numero": 4,
+  "hora": "21:00",
+  "ciudad": "Los Angeles",
+  "equipo1": "USA",
+  "equipo2": "PAR",
+  "grupo": "D"
+ },
+ {
+  "numero": 5,
+  "hora": "21:00",
+  "ciudad": "Boston",
+  "equipo1": "HAI",
+  "equipo2": "SCO",
+  "grupo": "C"
+ },
+ {
+  "numero": 6,
+  "hora": "00:00",
+  "ciudad": "Vancouver",
+  "equipo1": "AUS",
+  "equipo2": "TUR",
+  "grupo": "D"
+ },
+ {
+  "numero": 7,
+  "hora": "18:00",
+  "ciudad": "New York New Jersey",
+  "equipo1": "BRA",
+  "equipo2": "MAR",
+  "grupo": "C"
+ },
+ {
+  "numero": 8,
+  "hora": "15:00",
+  "ciudad": "San Francisco Bay Area",
+  "equipo1": "QAT",
+  "equipo2": "SUI",
+  "grupo": "B"
+ },
+ {
+  "numero": 9,
+  "hora": "19:00",
+  "ciudad": "Philadelphia",
+  "equipo1": "CIV",
+  "equipo2": "ECU",
+  "grupo": "E"
+ },
+ {
+  "numero": 10,
+  "hora": "13:00",
+  "ciudad": "Houston",
+  "equipo1": "GER",
+  "equipo2": "CUW",
+  "grupo": "E"
+ },
+ {
+  "numero": 11,
+  "hora": "16:00",
+  "ciudad": "Dallas",
+  "equipo1": "NED",
+  "equipo2": "JPN",
+  "grupo": "F"
+ },
+ {
+  "numero": 12,
+  "hora": "22:00",
+  "ciudad": "Monterrey",
+  "equipo1": "SWE",
+  "equipo2": "TUN",
+  "grupo": "F"
+ },
+ {
+  "numero": 13,
+  "hora": "18:00",
+  "ciudad": "Miami",
+  "equipo1": "KSA",
+  "equipo2": "URU",
+  "grupo": "H"
+ },
+ {
+  "numero": 14,
+  "hora": "12:00",
+  "ciudad": "Atlanta",
+  "equipo1": "ESP",
+  "equipo2": "CPV",
+  "grupo": "H"
+ },
+ {
+  "numero": 15,
+  "hora": "21:00",
+  "ciudad": "Los Angeles",
+  "equipo1": "IRN",
+  "equipo2": "NZL",
+  "grupo": "G"
+ },
+ {
+  "numero": 16,
+  "hora": "15:00",
+  "ciudad": "Seattle",
+  "equipo1": "BEL",
+  "equipo2": "EGY",
+  "grupo": "G"
+ },
+ {
+  "numero": 17,
+  "hora": "15:00",
+  "ciudad": "New York New Jersey",
+  "equipo1": "FRA",
+  "equipo2": "SEN",
+  "grupo": "I"
+ },
+ {
+  "numero": 18,
+  "hora": "18:00",
+  "ciudad": "Boston",
+  "equipo1": "IRQ",
+  "equipo2": "NOR",
+  "grupo": "I"
+ },
+ {
+  "numero": 19,
+  "hora": "21:00",
+  "ciudad": "Kansas City",
+  "equipo1": "ARG",
+  "equipo2": "ALG",
+  "grupo": "J"
+ },
+ {
+  "numero": 20,
+  "hora": "00:00",
+  "ciudad": "San Francisco Bay Area",
+  "equipo1": "AUT",
+  "equipo2": "JOR",
+  "grupo": "J"
+ },
+ {
+  "numero": 21,
+  "hora": "19:00",
+  "ciudad": "Toronto",
+  "equipo1": "GHA",
+  "equipo2": "PAN",
+  "grupo": "L"
+ },
+ {
+  "numero": 22,
+  "hora": "16:00",
+  "ciudad": "Dallas",
+  "equipo1": "ENG",
+  "equipo2": "CRO",
+  "grupo": "L"
+ },
+ {
+  "numero": 23,
+  "hora": "13:00",
+  "ciudad": "Houston",
+  "equipo1": "POR",
+  "equipo2": "COD",
+  "grupo": "K"
+ },
+ {
+  "numero": 24,
+  "hora": "22:00",
+  "ciudad": "Mexico City",
+  "equipo1": "UZB",
+  "equipo2": "COL",
+  "grupo": "K"
+ },
+ {
+  "numero": 25,
+  "hora": "12:00",
+  "ciudad": "Atlanta",
+  "equipo1": "CZE",
+  "equipo2": "RSA",
+  "grupo": "A"
+ },
+ {
+  "numero": 26,
+  "hora": "15:00",
+  "ciudad": "Los Angeles",
+  "equipo1": "SUI",
+  "equipo2": "BIH",
+  "grupo": "B"
+ },
+ {
+  "numero": 27,
+  "hora": "18:00",
+  "ciudad": "Vancouver",
+  "equipo1": "CAN",
+  "equipo2": "QAT",
+  "grupo": "B"
+ },
+ {
+  "numero": 28,
+  "hora": "21:00",
+  "ciudad": "Guadalajara",
+  "equipo1": "MEX",
+  "equipo2": "KOR",
+  "grupo": "A"
+ },
+ {
+  "numero": 29,
+  "hora": "20:30",
+  "ciudad": "Philadelphia",
+  "equipo1": "BRA",
+  "equipo2": "HAI",
+  "grupo": "C"
+ },
+ {
+  "numero": 30,
+  "hora": "18:00",
+  "ciudad": "Boston",
+  "equipo1": "SCO",
+  "equipo2": "MAR",
+  "grupo": "C"
+ },
+ {
+  "numero": 31,
+  "hora": "23:00",
+  "ciudad": "San Francisco Bay Area",
+  "equipo1": "TUR",
+  "equipo2": "PAR",
+  "grupo": "D"
+ },
+ {
+  "numero": 32,
+  "hora": "15:00",
+  "ciudad": "Seattle",
+  "equipo1": "USA",
+  "equipo2": "AUS",
+  "grupo": "D"
+ },
+ {
+  "numero": 33,
+  "hora": "16:00",
+  "ciudad": "Toronto",
+  "equipo1": "GER",
+  "equipo2": "CIV",
+  "grupo": "E"
+ },
+ {
+  "numero": 34,
+  "hora": "20:00",
+  "ciudad": "Kansas City",
+  "equipo1": "ECU",
+  "equipo2": "CUW",
+  "grupo": "E"
+ },
+ {
+  "numero": 35,
+  "hora": "13:00",
+  "ciudad": "Houston",
+  "equipo1": "NED",
+  "equipo2": "SWE",
+  "grupo": "F"
+ },
+ {
+  "numero": 36,
+  "hora": "00:00",
+  "ciudad": "Monterrey",
+  "equipo1": "TUN",
+  "equipo2": "JPN",
+  "grupo": "F"
+ },
+ {
+  "numero": 37,
+  "hora": "18:00",
+  "ciudad": "Miami",
+  "equipo1": "URU",
+  "equipo2": "CPV",
+  "grupo": "H"
+ },
+ {
+  "numero": 38,
+  "hora": "12:00",
+  "ciudad": "Atlanta",
+  "equipo1": "ESP",
+  "equipo2": "KSA",
+  "grupo": "H"
+ },
+ {
+  "numero": 39,
+  "hora": "15:00",
+  "ciudad": "Los Angeles",
+  "equipo1": "BEL",
+  "equipo2": "IRN",
+  "grupo": "G"
+ },
+ {
+  "numero": 40,
+  "hora": "21:00",
+  "ciudad": "Vancouver",
+  "equipo1": "NZL",
+  "equipo2": "EGY",
+  "grupo": "G"
+ },
+ {
+  "numero": 41,
+  "hora": "20:00",
+  "ciudad": "New York New Jersey",
+  "equipo1": "NOR",
+  "equipo2": "SEN",
+  "grupo": "I"
+ },
+ {
+  "numero": 42,
+  "hora": "17:00",
+  "ciudad": "Philadelphia",
+  "equipo1": "FRA",
+  "equipo2": "IRQ",
+  "grupo": "I"
+ },
+ {
+  "numero": 43,
+  "hora": "13:00",
+  "ciudad": "Dallas",
+  "equipo1": "ARG",
+  "equipo2": "AUT",
+  "grupo": "J"
+ },
+ {
+  "numero": 44,
+  "hora": "23:00",
+  "ciudad": "San Francisco Bay Area",
+  "equipo1": "JOR",
+  "equipo2": "ALG",
+  "grupo": "J"
+ },
+ {
+  "numero": 45,
+  "hora": "16:00",
+  "ciudad": "Boston",
+  "equipo1": "ENG",
+  "equipo2": "GHA",
+  "grupo": "L"
+ },
+ {
+  "numero": 46,
+  "hora": "19:00",
+  "ciudad": "Toronto",
+  "equipo1": "PAN",
+  "equipo2": "CRO",
+  "grupo": "L"
+ },
+ {
+  "numero": 47,
+  "hora": "13:00",
+  "ciudad": "Houston",
+  "equipo1": "POR",
+  "equipo2": "UZB",
+  "grupo": "K"
+ },
+ {
+  "numero": 48,
+  "hora": "22:00",
+  "ciudad": "Guadalajara",
+  "equipo1": "COL",
+  "equipo2": "COD",
+  "grupo": "K"
+ },
+ {
+  "numero": 49,
+  "hora": "18:00",
+  "ciudad": "Miami",
+  "equipo1": "SCO",
+  "equipo2": "BRA",
+  "grupo": "C"
+ },
+ {
+  "numero": 50,
+  "hora": "18:00",
+  "ciudad": "Atlanta",
+  "equipo1": "MAR",
+  "equipo2": "HAI",
+  "grupo": "C"
+ },
+ {
+  "numero": 51,
+  "hora": "15:00",
+  "ciudad": "Vancouver",
+  "equipo1": "SUI",
+  "equipo2": "CAN",
+  "grupo": "B"
+ },
+ {
+  "numero": 52,
+  "hora": "15:00",
+  "ciudad": "Seattle",
+  "equipo1": "BIH",
+  "equipo2": "QAT",
+  "grupo": "B"
+ },
+ {
+  "numero": 53,
+  "hora": "21:00",
+  "ciudad": "Mexico City",
+  "equipo1": "CZE",
+  "equipo2": "MEX",
+  "grupo": "A"
+ },
+ {
+  "numero": 54,
+  "hora": "21:00",
+  "ciudad": "Monterrey",
+  "equipo1": "RSA",
+  "equipo2": "KOR",
+  "grupo": "A"
+ },
+ {
+  "numero": 55,
+  "hora": "16:00",
+  "ciudad": "Philadelphia",
+  "equipo1": "CUW",
+  "equipo2": "CIV",
+  "grupo": "E"
+ },
+ {
+  "numero": 56,
+  "hora": "16:00",
+  "ciudad": "New York New Jersey",
+  "equipo1": "ECU",
+  "equipo2": "GER",
+  "grupo": "E"
+ },
+ {
+  "numero": 57,
+  "hora": "19:00",
+  "ciudad": "Dallas",
+  "equipo1": "JPN",
+  "equipo2": "SWE",
+  "grupo": "F"
+ },
+ {
+  "numero": 58,
+  "hora": "19:00",
+  "ciudad": "Kansas City",
+  "equipo1": "TUN",
+  "equipo2": "NED",
+  "grupo": "F"
+ },
+ {
+  "numero": 59,
+  "hora": "22:00",
+  "ciudad": "Los Angeles",
+  "equipo1": "TUR",
+  "equipo2": "USA",
+  "grupo": "D"
+ },
+ {
+  "numero": 60,
+  "hora": "22:00",
+  "ciudad": "San Francisco Bay Area",
+  "equipo1": "PAR",
+  "equipo2": "AUS",
+  "grupo": "D"
+ },
+ {
+  "numero": 61,
+  "hora": "15:00",
+  "ciudad": "Boston",
+  "equipo1": "NOR",
+  "equipo2": "FRA",
+  "grupo": "I"
+ },
+ {
+  "numero": 62,
+  "hora": "15:00",
+  "ciudad": "Toronto",
+  "equipo1": "SEN",
+  "equipo2": "IRQ",
+  "grupo": "I"
+ },
+ {
+  "numero": 63,
+  "hora": "23:00",
+  "ciudad": "Seattle",
+  "equipo1": "EGY",
+  "equipo2": "IRN",
+  "grupo": "G"
+ },
+ {
+  "numero": 64,
+  "hora": "23:00",
+  "ciudad": "Vancouver",
+  "equipo1": "NZL",
+  "equipo2": "BEL",
+  "grupo": "G"
+ },
+ {
+  "numero": 65,
+  "hora": "20:00",
+  "ciudad": "Houston",
+  "equipo1": "CPV",
+  "equipo2": "KSA",
+  "grupo": "H"
+ },
+ {
+  "numero": 66,
+  "hora": "20:00",
+  "ciudad": "Guadalajara",
+  "equipo1": "URU",
+  "equipo2": "ESP",
+  "grupo": "H"
+ },
+ {
+  "numero": 67,
+  "hora": "17:00",
+  "ciudad": "New York New Jersey",
+  "equipo1": "PAN",
+  "equipo2": "ENG",
+  "grupo": "L"
+ },
+ {
+  "numero": 68,
+  "hora": "17:00",
+  "ciudad": "Philadelphia",
+  "equipo1": "CRO",
+  "equipo2": "GHA",
+  "grupo": "L"
+ },
+ {
+  "numero": 69,
+  "hora": "22:00",
+  "ciudad": "Kansas City",
+  "equipo1": "ALG",
+  "equipo2": "AUT",
+  "grupo": "J"
+ },
+ {
+  "numero": 70,
+  "hora": "22:00",
+  "ciudad": "Dallas",
+  "equipo1": "JOR",
+  "equipo2": "ARG",
+  "grupo": "J"
+ },
+ {
+  "numero": 71,
+  "hora": "19:30",
+  "ciudad": "Miami",
+  "equipo1": "COL",
+  "equipo2": "POR",
+  "grupo": "K"
+ },
+ {
+  "numero": 72,
+  "hora": "19:30",
+  "ciudad": "Atlanta",
+  "equipo1": "COD",
+  "equipo2": "UZB",
+  "grupo": "K"
+ },
+ {
+  "numero": 73,
+  "hora": "15:00",
+  "ciudad": "Los Angeles",
+  "equipo1": "2A",
+  "equipo2": "2B",
+  "grupo": null
+ },
+ {
+  "numero": 74,
+  "hora": "16:30",
+  "ciudad": "Boston",
+  "equipo1": "1E",
+  "equipo2": "3ABCDF",
+  "grupo": null
+ },
+ {
+  "numero": 75,
+  "hora": "21:00",
+  "ciudad": "Monterrey",
+  "equipo1": "1F",
+  "equipo2": "2C",
+  "grupo": null
+ },
+ {
+  "numero": 76,
+  "hora": "13:00",
+  "ciudad": "Houston",
+  "equipo1": "1C",
+  "equipo2": "2F",
+  "grupo": null
+ },
+ {
+  "numero": 77,
+  "hora": "17:00",
+  "ciudad": "New York New Jersey",
+  "equipo1": "1I",
+  "equipo2": "3CDFGH",
+  "grupo": null
+ },
+ {
+  "numero": 78,
+  "hora": "13:00",
+  "ciudad": "Dallas",
+  "equipo1": "2E",
+  "equipo2": "2I",
+  "grupo": null
+ },
+ {
+  "numero": 79,
+  "hora": "21:00",
+  "ciudad": "Mexico City",
+  "equipo1": "1A",
+  "equipo2": "3CEFHI",
+  "grupo": null
+ },
+ {
+  "numero": 80,
+  "hora": "12:00",
+  "ciudad": "Atlanta",
+  "equipo1": "1L",
+  "equipo2": "3EHIJK",
+  "grupo": null
+ },
+ {
+  "numero": 81,
+  "hora": "20:00",
+  "ciudad": "San Francisco Bay Area",
+  "equipo1": "1D",
+  "equipo2": "3BEFIJ",
+  "grupo": null
+ },
+ {
+  "numero": 82,
+  "hora": "16:00",
+  "ciudad": "Seattle",
+  "equipo1": "1G",
+  "equipo2": "3AEHIJ",
+  "grupo": null
+ },
+ {
+  "numero": 83,
+  "hora": "19:00",
+  "ciudad": "Toronto",
+  "equipo1": "2K",
+  "equipo2": "2L",
+  "grupo": null
+ },
+ {
+  "numero": 84,
+  "hora": "15:00",
+  "ciudad": "Los Angeles",
+  "equipo1": "1H",
+  "equipo2": "2J",
+  "grupo": null
+ },
+ {
+  "numero": 85,
+  "hora": "23:00",
+  "ciudad": "Vancouver",
+  "equipo1": "1B",
+  "equipo2": "3EFGIJ",
+  "grupo": null
+ },
+ {
+  "numero": 86,
+  "hora": "18:00",
+  "ciudad": "Miami",
+  "equipo1": "1J",
+  "equipo2": "2H",
+  "grupo": null
+ },
+ {
+  "numero": 87,
+  "hora": "21:30",
+  "ciudad": "Kansas City",
+  "equipo1": "1K",
+  "equipo2": "3DEIJL",
+  "grupo": null
+ },
+ {
+  "numero": 88,
+  "hora": "14:00",
+  "ciudad": "Dallas",
+  "equipo1": "2D",
+  "equipo2": "2G",
+  "grupo": null
+ },
+ {
+  "numero": 89,
+  "hora": "17:00",
+  "ciudad": "Philadelphia",
+  "equipo1": "W74",
+  "equipo2": "W77",
+  "grupo": null
+ },
+ {
+  "numero": 90,
+  "hora": "13:00",
+  "ciudad": "Houston",
+  "equipo1": "W73",
+  "equipo2": "W75",
+  "grupo": null
+ },
+ {
+  "numero": 91,
+  "hora": "16:00",
+  "ciudad": "New York New Jersey",
+  "equipo1": "W76",
+  "equipo2": "W78",
+  "grupo": null
+ },
+ {
+  "numero": 92,
+  "hora": "20:00",
+  "ciudad": "Mexico City",
+  "equipo1": "W79",
+  "equipo2": "W80",
+  "grupo": null
+ },
+ {
+  "numero": 93,
+  "hora": "15:00",
+  "ciudad": "Dallas",
+  "equipo1": "W83",
+  "equipo2": "W84",
+  "grupo": null
+ },
+ {
+  "numero": 94,
+  "hora": "20:00",
+  "ciudad": "Seattle",
+  "equipo1": "W81",
+  "equipo2": "W82",
+  "grupo": null
+ },
+ {
+  "numero": 95,
+  "hora": "12:00",
+  "ciudad": "Atlanta",
+  "equipo1": "W86",
+  "equipo2": "W88",
+  "grupo": null
+ },
+ {
+  "numero": 96,
+  "hora": "16:00",
+  "ciudad": "Vancouver",
+  "equipo1": "W85",
+  "equipo2": "W87",
+  "grupo": null
+ },
+ {
+  "numero": 97,
+  "hora": "16:00",
+  "ciudad": "Boston",
+  "equipo1": "W89",
+  "equipo2": "W90",
+  "grupo": null
+ },
+ {
+  "numero": 98,
+  "hora": "15:00",
+  "ciudad": "Los Angeles",
+  "equipo1": "W93",
+  "equipo2": "W94",
+  "grupo": null
+ },
+ {
+  "numero": 99,
+  "hora": "17:00",
+  "ciudad": "Miami",
+  "equipo1": "W91",
+  "equipo2": "W92",
+  "grupo": null
+ },
+ {
+  "numero": 100,
+  "hora": "21:00",
+  "ciudad": "Kansas City",
+  "equipo1": "W95",
+  "equipo2": "W96",
+  "grupo": null
+ },
+ {
+  "numero": 101,
+  "hora": "15:00",
+  "ciudad": "Dallas",
+  "equipo1": "W97",
+  "equipo2": "W98",
+  "grupo": null
+ },
+ {
+  "numero": 102,
+  "hora": "15:00",
+  "ciudad": "Atlanta",
+  "equipo1": "W99",
+  "equipo2": "W100",
+  "grupo": null
+ },
+ {
+  "numero": 103,
+  "hora": "17:00",
+  "ciudad": "Miami",
+  "equipo1": "BRONZE",
+  "equipo2": "FINAL",
+  "grupo": null
+ },
+ {
+  "numero": 104,
+  "hora": "15:00",
+  "ciudad": "New York New Jersey",
+  "equipo1": "FINAL",
+  "equipo2": null,
+  "grupo": null
+ }
+]
