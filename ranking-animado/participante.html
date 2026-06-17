@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predicciones — La Mejor Polla Mundialista 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
+  :root {
+    --rojo:#C8102E;--azul:#003F87;--verde:#1A7A4A;--oro:#F5A623;
+    --plata:#A0A8B0;--bronce:#CD7F32;--fondo:#0A0E1A;--panel:#111827;
+    --borde:#1E2A40;--texto:#F0F4FF;--muted:#6B7A99;
+    --acierto:#22C55E;--fallo:#EF4444;--pendiente:#6B7A99;
+  }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--fondo);color:var(--texto);font-family:'Barlow',sans-serif;min-height:100vh; }
+  header {
+    background:linear-gradient(135deg,var(--azul) 0%,#001F5B 60%,#0A0E1A 100%);
+    border-bottom:3px solid var(--rojo);
+    padding:20px 24px 16px;text-align:center;position:relative;overflow:hidden;
+  }
+  header::before {
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.02) 20px,rgba(255,255,255,.02) 21px);
+  }
+  .h-trophy{font-size:2rem;line-height:1;margin-bottom:6px}
+  .h-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.3rem,5vw,1.9rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
+  .h-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.1rem,4vw,1.5rem);font-weight:800;color:var(--oro);margin-top:6px}
+  .back-link{display:inline-block;color:var(--texto);font-size:.78rem;text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:20px}
+  .back-link:hover{background:rgba(255,255,255,.08)}
+  .links-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+
+  main{max-width:680px;margin:0 auto;padding:16px 12px 40px}
+
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+  .stat{background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:10px 8px;text-align:center}
+  .stat-num{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800}
+  .stat-label{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+
+  .tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px}
+  .tab-btn{flex-shrink:0;background:transparent;border:1px solid var(--borde);color:var(--muted);font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;white-space:nowrap}
+  .tab-btn.active{background:var(--azul);color:#fff;border-color:var(--azul)}
+
+  .group-label{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;color:var(--oro);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px;padding-left:2px}
+  .group-label:first-child{margin-top:0}
+
+  .match-card{background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+  .match-card.pendiente{opacity:.55}
+  .match-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .match-fecha{font-size:.7rem;color:var(--muted)}
+  .match-pts{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:800;padding:2px 9px;border-radius:12px}
+  .match-pts.acierto-total{background:rgba(34,197,94,.15);color:var(--acierto)}
+  .match-pts.acierto-parcial{background:rgba(245,166,35,.15);color:var(--oro)}
+  .match-pts.fallo{background:rgba(239,68,68,.15);color:var(--fallo)}
+  .match-pts.pend{background:rgba(107,122,153,.15);color:var(--pendiente)}
+  .match-teams{display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;margin-bottom:6px}
+  .team{flex:1;text-align:right;font-size:.88rem}
+  .team.local{text-align:right}
+  .team.visit{text-align:left}
+  .vs-sep{color:var(--muted);font-size:.75rem;flex-shrink:0}
+  .scores-row{display:flex;justify-content:center;gap:24px;font-size:.78rem}
+  .score-block{text-align:center}
+  .score-label{color:var(--muted);font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+  .score-val{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem}
+  .score-val.real{color:var(--oro)}
+
+  .clasif-row{display:flex;justify-content:space-between;align-items:center;background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:9px 12px;margin-bottom:6px}
+  .clasif-pos{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.85rem;color:var(--oro);width:30px}
+  .clasif-pred{flex:1;font-size:.85rem}
+
+  .premio-row{display:flex;justify-content:space-between;align-items:center;background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:10px 12px;margin-bottom:6px}
+  .premio-nombre{font-size:.8rem;color:var(--muted)}
+  .premio-pred{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;color:var(--texto)}
+
+  .empty-msg{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 10px}
+  footer{text-align:center;color:var(--muted);font-size:.72rem;padding:24px 12px 12px;letter-spacing:.05em}
+</style>
+</head>
+<body>
+<header>
+  <div class="h-trophy">&#x1F3C6;</div>
+  <div class="h-title">Predicciones</div>
+  <div class="h-name" id="nombre-participante">Cargando...</div>
+  <div class="links-row">
+    <a class="back-link" href="../index.html">&larr; Volver a la tabla de resultados</a>
+    <a class="back-link" href="grafica.html">Ver ranking animado</a>
+  </div>
+</header>
+<main>
+  <div class="summary" id="summary"></div>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="grupos">Fase de grupos</button>
+    <button class="tab-btn" data-tab="eliminatoria">Eliminatoria</button>
+    <button class="tab-btn" data-tab="premios">Premios FIFA</button>
+  </div>
+  <div id="content"></div>
+</main>
+<footer id="footer"></footer>
+<script>
+function getSlugFromUrl(){
+  var params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
+
+var slug = getSlugFromUrl();
+if(!slug){
+  document.getElementById('content').innerHTML = '<p class="empty-msg">No se especificó ningún participante. Vuelve al ranking y haz clic en un nombre.</p>';
+} else {
+  fetch('data/predicciones/' + slug + '.json')
+    .then(function(r){
+      if(!r.ok) throw new Error('No encontrado');
+      return r.json();
+    })
+    .then(init)
+    .catch(function(err){
+      document.getElementById('nombre-participante').textContent = 'Participante no encontrado';
+      document.getElementById('content').innerHTML = '<p class="empty-msg">No se encontraron predicciones para "' + slug + '".</p>';
+      console.error(err);
+    });
+}
+
+function init(d){
+  document.getElementById('nombre-participante').textContent = d.nombre;
+  document.title = d.nombre + ' — Predicciones';
+
+  var ts = new Date(d.generado);
+  document.getElementById('footer').textContent =
+    'Datos exportados: ' + ts.toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}) +
+    ' ' + ts.toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});
+
+  renderSummary(d);
+  renderGrupos(d.fase_grupos);
+
+  var tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var tab = btn.dataset.tab;
+      if(tab==='grupos') renderGrupos(d.fase_grupos);
+      else if(tab==='eliminatoria') renderEliminatoria(d.eliminatoria);
+      else if(tab==='premios') renderPremios(d.premios_fifa);
+    });
+  });
+}
+
+function renderSummary(d){
+  var partidos = d.fase_grupos.filter(function(x){ return !x.tipo; });
+  var jugados = partidos.filter(function(x){ return x.jugado; });
+  var totalPts = jugados.reduce(function(s,x){ return s + (x.puntos||0); }, 0);
+  var aciertos = jugados.filter(function(x){ return x.puntos > 0; }).length;
+
+  document.getElementById('summary').innerHTML =
+    '<div class="stat"><div class="stat-num">'+totalPts+'</div><div class="stat-label">Puntos en grupos</div></div>'+
+    '<div class="stat"><div class="stat-num">'+jugados.length+'/'+partidos.length+'</div><div class="stat-label">Partidos jugados</div></div>'+
+    '<div class="stat"><div class="stat-num">'+aciertos+'</div><div class="stat-label">Aciertos</div></div>';
+}
+
+function ptsClass(item){
+  if(!item.jugado) return 'pend';
+  if(item.puntos >= 7) return 'acierto-total';
+  if(item.puntos > 0) return 'acierto-parcial';
+  return 'fallo';
+}
+
+function renderGrupos(items){
+  var html = '';
+  var grupoActual = null;
+  items.forEach(function(item){
+    if(item.tipo === 'clasificado_grupo') return;
+    if(item.grupo !== grupoActual){
+      grupoActual = item.grupo;
+      html += '<div class="group-label">Grupo ' + grupoActual + '</div>';
+    }
+    var cls = item.jugado ? '' : 'pendiente';
+    var ptsLabel = item.jugado ? (item.puntos + ' pts') : 'Pendiente';
+    var realLocal = item.jugado ? item.resultado_real.local : '–';
+    var realVisit = item.jugado ? item.resultado_real.visitante : '–';
+    html += '<div class="match-card '+cls+'">'+
+      '<div class="match-top"><span class="match-fecha">'+(item.fecha||'')+'</span>'+
+      '<span class="match-pts '+ptsClass(item)+'">'+ptsLabel+'</span></div>'+
+      '<div class="match-teams">'+
+        '<span class="team local">'+item.equipo_local+'</span>'+
+        '<span class="vs-sep">vs</span>'+
+        '<span class="team visit">'+item.equipo_visitante+'</span>'+
+      '</div>'+
+      '<div class="scores-row">'+
+        '<div class="score-block"><div class="score-label">Predicción</div><div class="score-val">'+item.prediccion.local+' - '+item.prediccion.visitante+'</div></div>'+
+        (item.jugado ? '<div class="score-block"><div class="score-label">Real</div><div class="score-val real">'+realLocal+' - '+realVisit+'</div></div>' : '')+
+      '</div>'+
+    '</div>';
+  });
+
+  html += '<div class="group-label">Clasificados por grupo</div>';
+  items.forEach(function(item){
+    if(item.tipo !== 'clasificado_grupo') return;
+    html += '<div class="clasif-row"><span class="clasif-pos">'+item.posicion+'</span>'+
+      '<span class="clasif-pred">'+(item.prediccion || 'Sin predicción')+'</span></div>';
+  });
+
+  document.getElementById('content').innerHTML = html;
+}
+
+function renderEliminatoria(items){
+  var html = '';
+  var rondaActual = null;
+  items.forEach(function(item){
+    if(item.ronda !== rondaActual){
+      rondaActual = item.ronda;
+      html += '<div class="group-label">'+rondaActual+'</div>';
+    }
+    var cls = item.jugado ? '' : 'pendiente';
+    var realLocal = item.jugado ? item.resultado_real.local : '–';
+    var realVisit = item.jugado ? item.resultado_real.visitante : '–';
+    html += '<div class="match-card '+cls+'">'+
+      '<div class="match-top"><span class="match-fecha"></span>'+
+      '<span class="match-pts pend">'+(item.jugado?'Jugado':'Pendiente')+'</span></div>'+
+      '<div class="match-teams">'+
+        '<span class="team local">'+item.equipo_local+'</span>'+
+        '<span class="vs-sep">vs</span>'+
+        '<span class="team visit">'+item.equipo_visitante+'</span>'+
+      '</div>'+
+      '<div class="scores-row">'+
+        '<div class="score-block"><div class="score-label">Predicción</div><div class="score-val">'+item.prediccion.local+' - '+item.prediccion.visitante+'</div></div>'+
+        '<div class="score-block"><div class="score-label">Ganador previsto</div><div class="score-val">'+item.prediccion.ganador+'</div></div>'+
+        (item.jugado ? '<div class="score-block"><div class="score-label">Real</div><div class="score-val real">'+realLocal+' - '+realVisit+'</div></div>' : '')+
+      '</div>'+
+    '</div>';
+  });
+  document.getElementById('content').innerHTML = html || '<p class="empty-msg">Sin datos de eliminatoria.</p>';
+}
+
+function renderPremios(items){
+  var html = '';
+  items.forEach(function(item){
+    html += '<div class="premio-row"><span class="premio-nombre">'+item.premio+'</span>'+
+      '<span class="premio-pred">'+(item.prediccion || 'Sin predicción')+'</span></div>';
+  });
+  document.getElementById('content').innerHTML = html || '<p class="empty-msg">Sin datos de premios.</p>';
+}
+</script>
+</body>
+</html>

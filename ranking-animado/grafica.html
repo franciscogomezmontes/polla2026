@@ -19,13 +19,15 @@
     padding:20px 24px 16px;text-align:center;position:relative;overflow:hidden;
   }
   header::before {
-    content:'';position:absolute;inset:0;
+    content:'';position:absolute;inset:0;pointer-events:none;
     background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.02) 20px,rgba(255,255,255,.02) 21px);
   }
   .h-trophy{font-size:2.5rem;line-height:1;margin-bottom:6px}
   .h-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,5vw,2.2rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
   .h-sub{font-family:'Barlow Condensed',sans-serif;font-size:clamp(.8rem,3vw,1rem);font-weight:600;color:var(--oro);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
   .h-badge{display:inline-block;background:var(--rojo);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-top:10px}
+  .back-link{display:inline-block;color:var(--texto);font-size:.78rem;text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:20px}
+  .back-link:hover{background:rgba(255,255,255,.08)}
   main{max-width:680px;margin:0 auto;padding:16px 12px 40px}
 
   .panel{background:var(--panel);border:1px solid var(--borde);border-radius:12px;padding:16px 14px}
@@ -54,6 +56,8 @@
   .bar.green{background:var(--verde)}
   .name{font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:600;color:var(--fondo);white-space:nowrap;padding:0 8px}
   .name.outside{position:static;margin-left:8px;color:var(--texto);padding:0}
+  .name-link{text-decoration:none;cursor:pointer}
+  .name-link:hover{text-decoration:underline}
   .pts{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:800;color:var(--texto);margin-left:6px;flex-shrink:0;min-width:24px}
 
   .controls{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--borde);flex-wrap:wrap}
@@ -75,6 +79,7 @@
   <div class="h-title">La Mejor Polla Mundialista</div>
   <div class="h-sub">FIFA World Cup 2026 &middot; Canada &middot; M&eacute;xico &middot; USA</div>
   <div class="h-badge">Ranking animado</div>
+  <div style="margin-top:10px"><a class="back-link" href="../index.html">&larr; Volver a la tabla de resultados</a></div>
 </header>
 <main>
 <div class="panel">
@@ -172,7 +177,7 @@ function init(DATA){
       var rank;
       if(x.puntos===lastPts){ rank=lastRank; }
       else{ rank=i+1; lastRank=rank; lastPts=x.puntos; }
-      ranks.push({nombre:x.nombre, puntos:x.puntos, rank:rank, origIdx:x.origIdx});
+      ranks.push({nombre:x.nombre, slug:x.slug, puntos:x.puntos, rank:rank, origIdx:x.origIdx});
     });
     return ranks;
   }
@@ -187,8 +192,8 @@ function init(DATA){
   function render(j){
     var rowh = mode==='cmp' ? ROWH_CMP : ROWH_ALL;
     var pool = (mode==='cmp' && selected.length)
-      ? selected.map(function(i){return {nombre:raw[i].nombre, puntos:raw[i].puntos[j] || 0, origIdx:i};})
-      : raw.map(function(p,i){return {nombre:p.nombre, puntos:p.puntos[j] || 0, origIdx:i};});
+      ? selected.map(function(i){return {nombre:raw[i].nombre, slug:raw[i].slug, puntos:raw[i].puntos[j] || 0, origIdx:i};})
+      : raw.map(function(p,i){return {nombre:p.nombre, slug:p.slug, puntos:p.puntos[j] || 0, origIdx:i};});
     var ranked = computeRealRanks(pool);
     ranked.sort(function(a,b){ return a.rank-b.rank; });
     barsEl.style.height=(ranked.length*rowh+6)+'px';
@@ -200,9 +205,9 @@ function init(DATA){
       html+='<div class="row" style="top:'+(visualPos*rowh)+'px">'+
         '<div class="rank">'+x.rank+'</div>'+
         '<div class="bar '+colorClass+'" style="width:'+w+'%">'+
-          (nameInside?'<span class="name">'+x.nombre+'</span>':'')+
+          (nameInside?'<a class="name name-link" href="participante.html?id='+x.slug+'">'+x.nombre+'</a>':'')+
         '</div>'+
-        (!nameInside?'<span class="name outside">'+x.nombre+'</span>':'')+
+        (!nameInside?'<a class="name outside name-link" href="participante.html?id='+x.slug+'">'+x.nombre+'</a>':'')+
         '<span class="pts">'+x.puntos+'</span>'+
       '</div>';
     });
