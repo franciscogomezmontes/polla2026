@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendario — La Mejor Polla Mundialista 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
+  :root {
+    --rojo:#C8102E;--azul:#003F87;--verde:#1A7A4A;--oro:#F5A623;
+    --plata:#A0A8B0;--bronce:#CD7F32;--fondo:#0A0E1A;--panel:#111827;
+    --borde:#1E2A40;--texto:#F0F4FF;--muted:#6B7A99;
+  }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--fondo);color:var(--texto);font-family:'Barlow',sans-serif;min-height:100vh; }
+  header {
+    background:linear-gradient(135deg,var(--azul) 0%,#001F5B 60%,#0A0E1A 100%);
+    border-bottom:3px solid var(--rojo);
+    padding:20px 24px 16px;text-align:center;position:relative;overflow:hidden;
+  }
+  header::before {
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.02) 20px,rgba(255,255,255,.02) 21px);
+  }
+  .h-trophy{font-size:2.5rem;line-height:1;margin-bottom:6px}
+  .h-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,5vw,2.2rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
+  .h-sub{font-family:'Barlow Condensed',sans-serif;font-size:clamp(.8rem,3vw,1rem);font-weight:600;color:var(--oro);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+  .h-badge{display:inline-block;background:var(--rojo);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-top:10px}
+  .back-link{display:inline-block;color:var(--texto);font-size:.78rem;text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:20px;margin-top:10px}
+  .back-link:hover{background:rgba(255,255,255,.08)}
+
+  main{max-width:680px;margin:0 auto;padding:16px 12px 40px}
+
+  .fase-block{margin-bottom:22px}
+  .fase-titulo{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--oro);padding-bottom:6px;border-bottom:1px solid var(--borde);margin-bottom:10px}
+
+  .grupo-block{margin-bottom:14px}
+  .grupo-titulo{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;padding-left:2px}
+
+  .partido-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;background:var(--panel);border:1px solid var(--borde);margin-bottom:6px;text-decoration:none;color:var(--texto)}
+  .partido-row:hover{background:#161E2F;border-color:var(--azul)}
+  .pr-fecha{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;color:var(--muted);width:64px;flex-shrink:0;line-height:1.2}
+  .pr-fecha .hora{display:block;color:var(--muted);font-weight:600}
+  .pr-equipos{flex:1;font-size:.88rem;font-weight:600;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .pr-marcador{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--oro);font-size:.95rem;flex-shrink:0}
+  .pr-pendiente{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;flex-shrink:0}
+  .pr-ciudad{font-size:.68rem;color:var(--muted);width:90px;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  footer{text-align:center;color:var(--muted);font-size:.72rem;padding:24px 12px 12px;letter-spacing:.05em}
+</style>
+</head>
+<body>
+<header>
+  <div class="h-trophy">&#x1F3C6;</div>
+  <div class="h-title">La Mejor Polla Mundialista</div>
+  <div class="h-sub">FIFA World Cup 2026 &middot; Canada &middot; M&eacute;xico &middot; USA</div>
+  <div class="h-badge">Calendario</div>
+  <div><a class="back-link" href="../index.html">&larr; Volver a la tabla de resultados</a></div>
+</header>
+<main id="main">
+  <p style="color:var(--muted);font-size:.85rem;padding:20px 0;text-align:center">Cargando calendario...</p>
+</main>
+<footer id="footer"></footer>
+<script>
+var ORDEN_FASES = ["Fase de grupos","Dieciseisavos","Octavos","Cuartos","Semifinales","3er y 4to puesto","Final"];
+var ORDEN_GRUPOS = ["A","B","C","D","E","F","G","H","I","J","K","L"];
+
+function fmtFechaCorta(iso){
+  if(!iso) return "";
+  var MESES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  var p = iso.split('-');
+  return parseInt(p[2],10)+' '+MESES[parseInt(p[1],10)-1];
+}
+
+function fmtHora12(hhmm){
+  if(!hhmm) return "";
+  var partes = hhmm.split(':');
+  var h = parseInt(partes[0],10), m = partes[1];
+  var ampm = h>=12 ? 'PM' : 'AM';
+  var h12 = h % 12; if(h12===0) h12=12;
+  return h12+':'+m+' '+ampm;
+}
+
+function nombreEquipoCorto(nombre){
+  if(!nombre) return "Por definir";
+  return nombre;
+}
+
+function filaPartido(p){
+  var marcadorHtml;
+  if(p.jugado){
+    marcadorHtml = '<span class="pr-marcador">'+(p.resultado_real ? p.resultado_real.local+'\u2013'+p.resultado_real.visitante : '')+'</span>';
+  } else {
+    marcadorHtml = '<span class="pr-pendiente">Pendiente</span>';
+  }
+
+  var equiposHtml;
+  if(p.equipos_fijos){
+    equiposHtml = nombreEquipoCorto(p.equipo1)+' <span style="color:var(--muted)">vs</span> '+nombreEquipoCorto(p.equipo2);
+  } else {
+    equiposHtml = '<span style="color:var(--muted);font-size:.78rem">Depende de tu predicci&oacute;n en rondas anteriores</span>';
+  }
+
+  return '<a class="partido-row" href="partido.html?id='+p.numero+'">'+
+    '<div class="pr-fecha">'+fmtFechaCorta(p.fecha)+'<span class="hora">'+fmtHora12(p.hora)+'</span></div>'+
+    '<div class="pr-equipos">'+equiposHtml+'</div>'+
+    marcadorHtml+
+    '<div class="pr-ciudad">'+(p.ciudad || '')+'</div>'+
+  '</a>';
+}
+
+fetch('data/partidos/_indice.json')
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    var partidos = data.partidos;
+    var porFase = {};
+    partidos.forEach(function(p){
+      porFase[p.fase] = porFase[p.fase] || [];
+      porFase[p.fase].push(p);
+    });
+
+    var html = '';
+    ORDEN_FASES.forEach(function(fase){
+      var lista = porFase[fase];
+      if(!lista || !lista.length) return;
+
+      html += '<div class="fase-block"><div class="fase-titulo">'+fase+'</div>';
+
+      if(fase === 'Fase de grupos'){
+        var porGrupo = {};
+        lista.forEach(function(p){
+          porGrupo[p.grupo] = porGrupo[p.grupo] || [];
+          porGrupo[p.grupo].push(p);
+        });
+        ORDEN_GRUPOS.forEach(function(g){
+          var pg = porGrupo[g];
+          if(!pg) return;
+          pg.sort(function(a,b){ return a.numero - b.numero; });
+          html += '<div class="grupo-block"><div class="grupo-titulo">Grupo '+g+'</div>';
+          pg.forEach(function(p){ html += filaPartido(p); });
+          html += '</div>';
+        });
+      } else {
+        lista.sort(function(a,b){ return a.numero - b.numero; });
+        lista.forEach(function(p){ html += filaPartido(p); });
+      }
+
+      html += '</div>';
+    });
+
+    document.getElementById('main').innerHTML = html;
+    var ts = new Date(data.generado);
+    document.getElementById('footer').textContent =
+      'Actualizado: ' + ts.toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}) +
+      ' ' + ts.toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});
+  })
+  .catch(function(err){
+    document.getElementById('main').innerHTML =
+      '<p style="color:var(--muted);font-size:.85rem;padding:20px 0;text-align:center">No se pudo cargar el calendario. Verifica que data/partidos/_indice.json exista.</p>';
+    console.error(err);
+  });
+</script>
+</body>
+</html>

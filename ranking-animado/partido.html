@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalle de partido — La Mejor Polla Mundialista 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
+  :root {
+    --rojo:#C8102E;--azul:#003F87;--verde:#1A7A4A;--oro:#F5A623;
+    --plata:#A0A8B0;--bronce:#CD7F32;--fondo:#0A0E1A;--panel:#111827;
+    --borde:#1E2A40;--texto:#F0F4FF;--muted:#6B7A99;
+    --sube:#22C55E;--baja:#EF4444;--igual:#6B7A99;
+  }
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { background:var(--fondo);color:var(--texto);font-family:'Barlow',sans-serif;min-height:100vh; }
+  header {
+    background:linear-gradient(135deg,var(--azul) 0%,#001F5B 60%,#0A0E1A 100%);
+    border-bottom:3px solid var(--rojo);
+    padding:16px 18px 14px;position:relative;overflow:hidden;
+  }
+  header::before {
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.02) 20px,rgba(255,255,255,.02) 21px);
+  }
+  .back-link{display:inline-block;color:var(--texto);font-size:.72rem;text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:3px 10px;border-radius:14px;margin-bottom:10px;position:relative;z-index:1}
+  .back-link:hover{background:rgba(255,255,255,.08)}
+  .fase-badge{display:inline-block;background:var(--rojo);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:14px;margin-bottom:8px;position:relative;z-index:1}
+  .matchup{display:flex;align-items:center;justify-content:center;gap:14px;margin:6px 0;position:relative;z-index:1}
+  .team{flex:1;text-align:center;min-width:0}
+  .team-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;color:var(--texto);letter-spacing:.01em;word-break:break-word}
+  .score{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:var(--oro);min-width:90px;text-align:center;letter-spacing:.05em;flex-shrink:0}
+  .score.pendiente{font-size:.85rem;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .nota-bracket{text-align:center;font-size:.72rem;color:var(--muted);margin-top:4px;position:relative;z-index:1}
+  .meta{display:flex;justify-content:center;gap:18px;margin-top:10px;flex-wrap:wrap;position:relative;z-index:1}
+  .meta-item{display:flex;align-items:center;gap:5px;font-size:.74rem;color:var(--muted)}
+
+  main{max-width:680px;margin:0 auto;padding:0 0 40px}
+  .body-panel{padding:14px 14px 18px}
+  .list-head{display:flex;font-family:'Barlow Condensed',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 8px 8px;border-bottom:1px solid var(--borde)}
+  .col-rank{width:30px;flex-shrink:0}
+  .col-nom{flex:1;min-width:0}
+  .col-pred{width:90px;text-align:center;flex-shrink:0}
+  .col-pts{width:42px;text-align:right;flex-shrink:0}
+
+  .row{display:flex;align-items:center;padding:9px 8px;border-bottom:1px solid var(--borde);font-size:.86rem;gap:4px}
+  .row:hover{background:rgba(255,255,255,.03)}
+  .rank{width:30px;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--muted);font-size:.85rem;flex-shrink:0}
+  .rank.top1{color:var(--oro)}
+  .rank.top2{color:var(--plata)}
+  .rank.top3{color:var(--bronce)}
+  .nombre{flex:1;min-width:0;color:var(--texto);font-weight:600;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .nombre:hover{text-decoration:underline}
+  .pred{width:90px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--texto);font-size:.85rem;flex-shrink:0}
+  .pred .matchup-mini{font-size:.66rem;font-weight:600;color:var(--muted);display:block;line-height:1.15;white-space:normal}
+  .pts{width:42px;text-align:right;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.95rem;flex-shrink:0}
+  .pts.acierto{color:var(--sube)}
+  .pts.parcial{color:var(--oro)}
+  .pts.fallo{color:var(--muted)}
+  .pts.na{color:var(--muted);font-size:.78rem}
+
+  footer{text-align:center;color:var(--muted);font-size:.72rem;padding:24px 12px 12px;letter-spacing:.05em}
+</style>
+</head>
+<body>
+<header>
+  <a class="back-link" href="calendario.html">&larr; Volver al calendario</a>
+  <div style="text-align:center" id="header-content">
+    <p style="color:var(--muted);font-size:.85rem">Cargando partido...</p>
+  </div>
+</header>
+<main>
+  <div class="body-panel">
+    <div class="list-head">
+      <div class="col-rank">#</div>
+      <div class="col-nom">Participante</div>
+      <div class="col-pred">Predicci&oacute;n</div>
+      <div class="col-pts">Pts</div>
+    </div>
+    <div id="lista-predicciones"></div>
+  </div>
+</main>
+<footer id="footer"></footer>
+<script>
+function getQueryParam(name){
+  var params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+function fmtFechaLarga(iso){
+  if(!iso) return "";
+  var MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  var p = iso.split('-');
+  return parseInt(p[2],10)+' de '+MESES[parseInt(p[1],10)-1]+' '+p[0];
+}
+
+function fmtHora12(hhmm){
+  if(!hhmm) return "";
+  var partes = hhmm.split(':');
+  var h = parseInt(partes[0],10), m = partes[1];
+  var ampm = h>=12 ? 'PM' : 'AM';
+  var h12 = h % 12; if(h12===0) h12=12;
+  return h12+':'+m+' '+ampm;
+}
+
+function medalClass(r){ return r===1?'top1':r===2?'top2':r===3?'top3':''; }
+
+function colorPuntos(pts, maxAcierto){
+  if(pts === null || pts === undefined) return 'na';
+  if(pts >= maxAcierto) return 'acierto';
+  if(pts > 0) return 'parcial';
+  return 'fallo';
+}
+
+var id = getQueryParam('id');
+if(!id){
+  document.getElementById('header-content').innerHTML =
+    '<p style="color:var(--muted)">No se especific&oacute; un partido (falta ?id= en la URL).</p>';
+} else {
+  fetch('data/partidos/partido_' + id + '.json')
+    .then(function(r){ return r.json(); })
+    .then(init)
+    .catch(function(err){
+      document.getElementById('header-content').innerHTML =
+        '<p style="color:var(--muted)">No se pudo cargar la informaci&oacute;n de este partido.</p>';
+      console.error(err);
+    });
+}
+
+function init(p){
+  var headerHtml = '<div class="fase-badge">' + (p.grupo ? 'Grupo ' + p.grupo + ' &middot; ' : '') + p.fase + '</div>';
+
+  if(p.equipos_fijos){
+    headerHtml += '<div class="matchup">' +
+      '<div class="team"><div class="team-name">' + (p.equipo1 || 'Por definir') + '</div></div>' +
+      (p.jugado
+        ? '<div class="score">' + p.resultado_real.local + '&ndash;' + p.resultado_real.visitante + '</div>'
+        : '<div class="score pendiente">Pendiente</div>') +
+      '<div class="team"><div class="team-name">' + (p.equipo2 || 'Por definir') + '</div></div>' +
+    '</div>';
+    if(/^\d/.test(String(p.equipo1)) || /^\d/.test(String(p.equipo2))){
+      headerHtml += '<div class="nota-bracket">Los equipos se definir&aacute;n al cerrar la fase de grupos</div>';
+    }
+  } else {
+    headerHtml += '<div class="matchup">' +
+      '<div class="team"><div class="team-name">Posici&oacute;n del bracket</div></div>' +
+      (p.jugado
+        ? '<div class="score">' + p.resultado_real.local + '&ndash;' + p.resultado_real.visitante + '</div>'
+        : '<div class="score pendiente">Pendiente</div>') +
+    '</div>' +
+    '<div class="nota-bracket">Cada participante predijo equipos distintos seg&uacute;n qui&eacute;n hizo avanzar en rondas anteriores</div>';
+  }
+
+  headerHtml += '<div class="meta">' +
+    '<div class="meta-item">' + fmtFechaLarga(p.fecha) + '</div>' +
+    '<div class="meta-item">' + fmtHora12(p.hora) + '</div>' +
+    '<div class="meta-item">' + (p.ciudad || 'Sede por confirmar') + '</div>' +
+  '</div>';
+
+  document.getElementById('header-content').innerHTML = headerHtml;
+  document.title = (p.equipos_fijos ? (p.equipo1 + ' vs ' + p.equipo2) : p.fase) + ' — La Mejor Polla Mundialista 2026';
+
+  var maxAcierto = 9;
+  if(p.fase === 'Dieciseisavos') maxAcierto = 16;
+  else if(p.fase === 'Octavos') maxAcierto = 18;
+  else if(p.fase === 'Cuartos') maxAcierto = 23;
+  else if(p.fase === 'Semifinales') maxAcierto = 35;
+  else if(p.fase === '3er y 4to puesto') maxAcierto = 42;
+  else if(p.fase === 'Final') maxAcierto = 66;
+
+  var html = '';
+  p.predicciones.forEach(function(pred){
+    var predHtml;
+    if(p.equipos_fijos){
+      predHtml = (pred.prediccion.local !== null && pred.prediccion.local !== undefined)
+        ? pred.prediccion.local + '&ndash;' + pred.prediccion.visitante
+        : '&mdash;';
+    } else {
+      var eq1 = pred.equipo1 || 'Por definir';
+      var eq2 = pred.equipo2 || 'Por definir';
+      var marcador = (pred.prediccion.local !== null && pred.prediccion.local !== undefined)
+        ? pred.prediccion.local + '&ndash;' + pred.prediccion.visitante
+        : '&mdash;';
+      predHtml = marcador + '<span class="matchup-mini">' + eq1 + ' vs ' + eq2 + '</span>';
+    }
+
+    var ptsClass = colorPuntos(pred.puntos, maxAcierto);
+    var ptsHtml = (pred.puntos !== null && pred.puntos !== undefined) ? pred.puntos : '&mdash;';
+
+    html += '<a class="row" href="participante.html?id=' + pred.slug + '" style="text-decoration:none">' +
+      '<div class="rank ' + medalClass(pred.rank) + '">' + (pred.rank || '') + '</div>' +
+      '<div class="nombre">' + pred.nombre + '</div>' +
+      '<div class="pred">' + predHtml + '</div>' +
+      '<div class="pts ' + ptsClass + '">' + ptsHtml + '</div>' +
+    '</a>';
+  });
+  document.getElementById('lista-predicciones').innerHTML = html;
+
+  document.getElementById('footer').textContent = 'Partido ' + p.numero + (p.numero_oficial_fifa ? ' · #' + p.numero_oficial_fifa + ' oficial FIFA' : '');
+}
+</script>
+</body>
+</html>
