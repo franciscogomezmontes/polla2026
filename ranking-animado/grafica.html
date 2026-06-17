@@ -245,10 +245,12 @@ function init(DATA){
     jornadaFecha.textContent = fmtFecha(fechas[j]);
 
     var rowh = mode==='cmp' ? ROWH_CMP : ROWH_ALL;
-    var pool = (mode==='cmp' && selected.length)
-      ? selected.map(function(i){return {nombre:raw[i].nombre, slug:raw[i].slug, puntos:raw[i].puntos[j] || 0, origIdx:i};})
-      : raw.map(function(p,i){return {nombre:p.nombre, slug:p.slug, puntos:p.puntos[j] || 0, origIdx:i};});
-    var ranked = computeRealRanks(pool);
+    var poolCompleto = raw.map(function(p,i){return {nombre:p.nombre, slug:p.slug, puntos:p.puntos[j] || 0, origIdx:i};});
+    var rankedCompleto = computeRealRanks(poolCompleto);
+
+    var ranked = (mode==='cmp' && selected.length)
+      ? rankedCompleto.filter(function(x){ return selected.indexOf(x.origIdx) > -1; })
+      : rankedCompleto;
     ranked.sort(function(a,b){ return a.rank-b.rank; });
     barsEl.style.height=(ranked.length*rowh+6)+'px';
 
