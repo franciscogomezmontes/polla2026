@@ -32,7 +32,7 @@
 
   main{max-width:680px;margin:0 auto;padding:16px 12px 40px}
 
-  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+  .summary{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px}
   .stat{background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:10px 8px;text-align:center}
   .stat-num{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800}
   .stat-label{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
@@ -128,7 +128,21 @@ function init(d){
     'Datos exportados: ' + ts.toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}) +
     ' ' + ts.toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});
 
-  renderSummary(d);
+  // Cargar puntos totales desde ranking_historico.json
+  fetch('data/ranking_historico.json')
+    .then(function(r){ return r.json(); })
+    .then(function(ranking){
+      var part = ranking.participantes.find(function(p){ return p.slug === d.slug; });
+      var puntosTotales = null;
+      if(part && part.puntos && part.puntos.length > 0){
+        puntosTotales = part.puntos[part.puntos.length - 1];
+      }
+      renderSummary(d, puntosTotales);
+    })
+    .catch(function(){
+      renderSummary(d, null);
+    });
+
   renderGrupos(d.fase_grupos);
 
   var tabs = document.querySelectorAll('.tab-btn');
@@ -144,16 +158,31 @@ function init(d){
   });
 }
 
-function renderSummary(d){
-  var partidos = d.fase_grupos.filter(function(x){ return !x.tipo; });
-  var jugados = partidos.filter(function(x){ return x.jugado; });
-  var totalPts = jugados.reduce(function(s,x){ return s + (x.puntos||0); }, 0);
-  var aciertos = jugados.filter(function(x){ return x.puntos > 0; }).length;
+function renderSummary(d, puntosTotales){
+  // Puntos en grupos: partidos + clasificados (ambos ya tienen campo 'puntos' en el JSON)
+  var ptsPartidos = d.fase_grupos
+    .filter(function(x){ return !x.tipo; })
+    .reduce(function(s,x){ return s + (x.puntos||0); }, 0);
+  var ptsClasilf = d.fase_grupos
+    .filter(function(x){ return x.tipo === 'clasificado_grupo'; })
+    .reduce(function(s,x){ return s + (x.puntos||0); }, 0);
+  var ptsGrupos = ptsPartidos + ptsClasilf;
+
+  // Partidos jugados: todos los del torneo (grupos + eliminatoria)
+  var partidosGrupos = d.fase_grupos.filter(function(x){ return !x.tipo; });
+  var jugadosGrupos = partidosGrupos.filter(function(x){ return x.jugado; }).length;
+  var jugadosElim = d.eliminatoria.filter(function(x){ return x.jugado; }).length;
+  var totalTorneo = partidosGrupos.length + d.eliminatoria.length;
+  var totalJugados = jugadosGrupos + jugadosElim;
+
+  var totalHtml = puntosTotales !== null && puntosTotales !== undefined
+    ? puntosTotales
+    : '&mdash;';
 
   document.getElementById('summary').innerHTML =
-    '<div class="stat"><div class="stat-num">'+totalPts+'</div><div class="stat-label">Puntos en grupos</div></div>'+
-    '<div class="stat"><div class="stat-num">'+jugados.length+'/'+partidos.length+'</div><div class="stat-label">Partidos jugados</div></div>'+
-    '<div class="stat"><div class="stat-num">'+aciertos+'</div><div class="stat-label">Aciertos</div></div>';
+    '<div class="stat"><div class="stat-num">'+ptsGrupos+'</div><div class="stat-label">Puntos en grupos</div></div>'+
+    '<div class="stat"><div class="stat-num">'+totalHtml+'</div><div class="stat-label">Puntos totales</div></div>'+
+    '<div class="stat" style="grid-column:1/-1"><div class="stat-num">'+totalJugados+'/'+totalTorneo+'</div><div class="stat-label">Partidos jugados</div></div>';
 }
 
 function ptsClass(item){
