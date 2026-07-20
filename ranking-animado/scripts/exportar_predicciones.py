@@ -260,13 +260,19 @@ def extraer_eliminatoria(ws, col_inicio, mapa_clasif, mapa_especial):
     ]
 
     MAPA_ESPECIAL_FASE = {
-        "3er y 4to puesto": ("RU101", "RU102"),
-        "Final": ("W101", "W102"),
+        "Semifinales":      ("W101", "W102", "RU101", "RU102"),
+        "3er y 4to puesto": ("Terecro",),
+        "Final":            ("Campeon",),
     }
 
     rondas = []
+    # Para Semis necesitamos distribuir W101/W102 entre las dos semis
+    # W101 va con la Semi 1 (fila 169), W102 va con la Semi 2 (fila 170)
+    # RU101 va con la Semi 1 (fila 169), RU102 va con la Semi 2 (fila 170)
+    SEMIS_FILAS = list(range(169, 171))
 
     for bloque, nombre_fase in BLOQUES:
+        semis_idx = 0  # contador para distribuir W/RU entre semi1 y semi2
         for rr in bloque:
             num_partido = ws.cell(row=rr, column=COL_NUM_PARTIDO).value
             if num_partido is None:
@@ -283,26 +289,38 @@ def extraer_eliminatoria(ws, col_inicio, mapa_clasif, mapa_especial):
 
             jugado = real_local is not None and real_visit is not None
 
-            # Ganador real del clasificado: columna 10 de la fila del PARTIDO
             real_ganador = ws.cell(row=rr, column=COL_REAL_GANADOR).value
 
-            # Puntos y clasificado real desde las filas correspondientes
             pts_clasif = 0
             real_clasificado = None
-            if nombre_fase in MAPA_ESPECIAL_FASE:
-                # 3er puesto: RU101 + RU102 | Final: W101 + W102
-                llave1, llave2 = MAPA_ESPECIAL_FASE[nombre_fase]
-                fila_c1 = mapa_especial.get(llave1)
-                fila_c2 = mapa_especial.get(llave2)
-                # Sumar puntos de ambas filas de clasificado
-                pts_c1 = ws.cell(row=fila_c1, column=col_inicio + 3).value or 0 if fila_c1 else 0
-                pts_c2 = ws.cell(row=fila_c2, column=col_inicio + 3).value or 0 if fila_c2 else 0
-                pts_clasif = pts_c1 + pts_c2
-                # Clasificado real: viene de la fila 'Terecro' o 'Campeon' (col8),
-                # NO de RU101/W101 que son los participantes del partido, no el ganador
-                llave_resultado = 'Terecro' if nombre_fase == '3er y 4to puesto' else 'Campeon'
+
+            if nombre_fase == "Semifinales":
+                # Semi 1 (primera fila del bloque): W101 + RU101
+                # Semi 2 (segunda fila del bloque): W102 + RU102
+                if semis_idx == 0:
+                    llaves_clasif = ("W101", "RU101")
+                else:
+                    llaves_clasif = ("W102", "RU102")
+                for llave in llaves_clasif:
+                    fila_c = mapa_especial.get(llave)
+                    if fila_c:
+                        pts_clasif += ws.cell(row=fila_c, column=col_inicio + 3).value or 0
+                # clasificado real de la semi = el ganador (W101 o W102)
+                llave_gan = "W101" if semis_idx == 0 else "W102"
+                fila_gan = mapa_especial.get(llave_gan)
+                real_clasificado = ws.cell(row=fila_gan, column=8).value if fila_gan else None
+                semis_idx += 1
+
+            elif nombre_fase in ("3er y 4to puesto", "Final"):
+                llaves = MAPA_ESPECIAL_FASE[nombre_fase]
+                for llave in llaves:
+                    fila_c = mapa_especial.get(llave)
+                    if fila_c:
+                        pts_clasif += ws.cell(row=fila_c, column=col_inicio + 3).value or 0
+                llave_resultado = llaves[0]
                 fila_resultado = mapa_especial.get(llave_resultado)
                 real_clasificado = ws.cell(row=fila_resultado, column=8).value if fila_resultado else None
+
             else:
                 fila_c = mapa_clasif.get(rr)
                 if fila_c:
