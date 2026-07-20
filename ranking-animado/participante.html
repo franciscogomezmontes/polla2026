@@ -68,9 +68,13 @@
   .clasif-pos{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.85rem;color:var(--oro);width:30px}
   .clasif-pred{flex:1;font-size:.85rem}
 
-  .premio-row{display:flex;justify-content:space-between;align-items:center;background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:10px 12px;margin-bottom:6px}
-  .premio-nombre{font-size:.8rem;color:var(--muted)}
+  .premio-row{background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:10px 12px;margin-bottom:6px}
+  .premio-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .premio-nombre{font-size:.78rem;color:var(--muted)}
   .premio-pred{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;color:var(--texto)}
+  .premio-real-row{display:flex;justify-content:space-between;align-items:center;margin-top:4px;padding-top:4px;border-top:1px solid var(--borde)}
+  .premio-real-label{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .premio-real-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.88rem;color:var(--oro)}
 
   .empty-msg{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 10px}
   footer{text-align:center;color:var(--muted);font-size:.72rem;padding:24px 12px 12px;letter-spacing:.05em}
@@ -285,8 +289,26 @@ function renderEliminatoria(items){
 function renderPremios(items){
   var html = '';
   items.forEach(function(item){
-    html += '<div class="premio-row"><span class="premio-nombre">'+item.premio+'</span>'+
-      '<span class="premio-pred">'+(item.prediccion || 'Sin predicción')+'</span></div>';
+    var pts = item.puntos || 0;
+    var ptsCls = pts > 0 ? 'acierto-parcial' : 'fallo';
+    var ptsHtml = '<span class="match-pts '+ptsCls+'">'+pts+' pts</span>';
+
+    var realHtml = '';
+    if(item.real){
+      realHtml = '<div class="premio-real-row">'+
+        '<span class="premio-real-label">Real</span>'+
+        '<span class="premio-real-val">'+item.real+'</span>'+
+      '</div>';
+    }
+
+    html += '<div class="premio-row">'+
+      '<div class="premio-top">'+
+        '<span class="premio-nombre">'+item.premio+'</span>'+
+        ptsHtml+
+      '</div>'+
+      '<div class="premio-pred">'+(item.prediccion || 'Sin predicción')+'</div>'+
+      realHtml+
+    '</div>';
   });
   document.getElementById('content').innerHTML = html || '<p class="empty-msg">Sin datos de premios.</p>';
 }

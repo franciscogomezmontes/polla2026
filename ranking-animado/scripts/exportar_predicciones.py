@@ -235,9 +235,9 @@ def construir_mapa_clasificados(ws, partidos_pdf):
         if num_oficial and num_oficial in clasif_por_num:
             mapa[r] = clasif_por_num[num_oficial]
 
-    # Mapa especial para 3ro y Final (W101, W102, RU101, RU102)
+    # Mapa especial para 3ro y Final (W101, W102, RU101, RU102, Terecro, Campeon)
     mapa_especial = {}
-    for r in range(171, 175):
+    for r in range(171, 179):
         label = ws.cell(row=r, column=COL_EQUIPO1).value
         if label:
             mapa_especial[str(label).strip()] = r
@@ -298,8 +298,11 @@ def extraer_eliminatoria(ws, col_inicio, mapa_clasif, mapa_especial):
                 pts_c1 = ws.cell(row=fila_c1, column=col_inicio + 3).value or 0 if fila_c1 else 0
                 pts_c2 = ws.cell(row=fila_c2, column=col_inicio + 3).value or 0 if fila_c2 else 0
                 pts_clasif = pts_c1 + pts_c2
-                # Clasificado real: el ganador real viene de col8 de fila_c1 (el ganador)
-                real_clasificado = ws.cell(row=fila_c1, column=8).value if fila_c1 else None
+                # Clasificado real: viene de la fila 'Terecro' o 'Campeon' (col8),
+                # NO de RU101/W101 que son los participantes del partido, no el ganador
+                llave_resultado = 'Terecro' if nombre_fase == '3er y 4to puesto' else 'Campeon'
+                fila_resultado = mapa_especial.get(llave_resultado)
+                real_clasificado = ws.cell(row=fila_resultado, column=8).value if fila_resultado else None
             else:
                 fila_c = mapa_clasif.get(rr)
                 if fila_c:
@@ -356,7 +359,14 @@ def extraer_premios(ws, col_inicio):
             continue
         label_norm = PREMIOS_LABELS.get(label, label)
         prediccion = ws.cell(row=r, column=col_inicio + 2).value
-        premios.append({"premio": label_norm, "prediccion": prediccion})
+        puntos = ws.cell(row=r, column=col_inicio + 3).value
+        real = ws.cell(row=r, column=8).value  # col8 = valor real del premio
+        premios.append({
+            "premio": label_norm,
+            "prediccion": prediccion,
+            "real": real,
+            "puntos": puntos,
+        })
         r += 1
         if len(premios) >= len(PREMIOS_LABELS):
             break
